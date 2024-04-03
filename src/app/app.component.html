@@ -1,0 +1,19 @@
+<header>
+  <div class="main-heading">
+    <h1><span>BANCO</span></h1>
+  </div>|
+</header>
+<div class="main-panel">|
+  <router-outlet></router-outlet>
+</div>
+
+
+<ngx-spinner
+  bdColor = "rgba(0, 0, 0, 0.8)"
+  size = "medium"
+  color = "#fff"
+  type = "ball-scale-multiple"
+  [fullScreen] = "true">
+  <p style="color: white" > Cargando... </p>
+</ngx-spinner>
+

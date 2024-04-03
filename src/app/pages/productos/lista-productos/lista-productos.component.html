@@ -1,0 +1,54 @@
+
+<div class="center" style="display: grid;">
+  <div style="width: 800px;background: white;" >
+    <input type="text" style="float: left;" placeholder="Search..." [formControl]="filtro">
+    <button (click)="navegar()" class="agregar" style="float: right;">Agregar</button>
+  </div>
+  <table aria-describedby="productos" style="width: 800px;background: white;">
+    <tr>
+      <th>Logo</th>
+      <th>Nombre del producto</th>
+      <th>Descripción</th>
+      <th>Fecha de liberación</th>
+      <th>Fecha de escrituración</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let item of productosFiltrados | async; index as i">
+      <td><img [src]="item.logo" width="50" height="50" alt="logo"></td>
+      <td>{{item.name}} {{i}}</td>
+      <td>{{item.description}}</td>
+      <td>{{item.date_release | date : 'dd/MM/yyyy'}}</td>
+      <td>{{item.date_revision | date : 'dd/MM/yyyy'}}</td>
+      <td>
+        <div class="dropdown">
+          <button class="dropbtn"><mat-icon>more_vert</mat-icon></button>
+          <div class="dropdown-content">
+            <a [routerLink]="['/productos/formulario',item.id]">Editar</a>
+            <a (click)="dialogoEliminar(item)">Eliminar</a>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <div style="width: 800px;background: white;">
+    <p class="float-left">{{(productosFiltrados | async)?.length}} Resultados</p>
+    <select id="pag" class="float-right" (change)="cambiaPag($event)">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+  </div>
+</div>
+
+<div id="confirma" class="modal">
+  <form class="modal-content">
+    <div class="container">
+      <p>Esta seguro de eliminar el producto {{seleccionado?.name  || ''}} ?</p>
+
+      <div class="clearfix">
+        <button type="button" class="cancelar" onclick="document.getElementById('confirma').style.display='none'">Cancelar</button>
+        <button type="button" class="confirmar" (click)="eliminar()">Confimar</button>
+      </div>
+    </div>
+  </form>
+</div>

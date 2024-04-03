@@ -1,0 +1,62 @@
+button{
+  width: 100px;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.reiniciar{
+  background-color: #e7e7e7d5;
+  color: black;
+}
+
+.enviar{
+  background-color: #eef115d5;
+  color: black;
+}
+
+.enviar:disabled{
+  background-color: #eef115d5;
+  color: white;
+  cursor: none;
+}
+
+.regresar{
+  background-color: #ffffffd5;
+  color: black;
+}
+
+.error{
+  color: red;
+  font-size: x-small;
+  font-weight: bolder;
+}
+
+
+input[type=text], input[type=date] {
+  width: 400px;
+  padding: 12px 20px;
+  margin: 8px 10px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+
+.input-error{
+  border: 2px solid red !important;
+  border-radius: 4px !important;
+}
+
+
+.seccion {
+  width: 50%;
+  display: grid;
+}
+
+p{
+  margin-top: 0px;
+  margin-left: 10px;
+}

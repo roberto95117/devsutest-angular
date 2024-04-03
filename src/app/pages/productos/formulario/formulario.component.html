@@ -1,0 +1,48 @@
+<div class="header-pay section-header center">
+  Formulario de Registro
+</div>
+<form [formGroup]="formularioProducto">
+  <div class="center">
+    <div class="seccion final">
+      <label for="id">Id</label>
+      <input (focusout)="validaExistente()" id="id" type="text" formControlName="id" placeholder="Id" [class.input-error]="!this.formularioProducto.get('id').valid" [readOnly]="id != null"/>
+      <p class="error" *ngIf="this.formularioProducto.get('id').hasError('required')">Campo requerido</p>
+      <p class="error" *ngIf="this.formularioProducto.get('id').hasError('maxlength')">Máximo 10 caracteres</p>
+      <p class="error" *ngIf="this.formularioProducto.get('id').hasError('minlength')">Minimo 3 caracteres</p>
+      <p class="error" *ngIf="this.formularioProducto.get('id').hasError('existente')">Ya existe registro con el Id ingresado</p>
+
+      <label for="desc">Descripción</label>
+      <input id="desc" type="text" formControlName="description" placeholder="descripción" [class.input-error]="!this.formularioProducto.get('description').valid"/>
+      <p class="error" *ngIf="this.formularioProducto.get('description').hasError('required')">Campo requerido</p>
+      <p class="error" *ngIf="this.formularioProducto.get('description').hasError('maxlength')">Máximo 200 caracteres</p>
+      <p class="error" *ngIf="this.formularioProducto.get('description').hasError('minlength')">Minimo 10 caracteres</p>
+
+      <label for="dRel">Fecha liberación</label>
+      <input id="dRel" type="date" formControlName="date_release" placeholder="fecha liberación" [class.input-error]="!this.formularioProducto.get('date_release').valid"/>
+      <p class="error" *ngIf="this.formularioProducto.get('date_release').hasError('required')">Campo requerido</p>
+
+      <button class="reiniciar" (click)="limpiar()"> Reiniciar</button>
+    </div>
+    <div class="seccion">
+      <label for="name">Nombre</label>
+      <input id="name" type="text" formControlName="name" placeholder="nombre" [class.input-error]="!this.formularioProducto.get('name').valid"/>
+      <p class="error" *ngIf="this.formularioProducto.get('name').hasError('required')">Campo requerido</p>
+      <p class="error" *ngIf="this.formularioProducto.get('name').hasError('maxlength')">Máximo 100 caracteres</p>
+      <p class="error" *ngIf="this.formularioProducto.get('name').hasError('minlength')">Minimo 5 caracteres</p>
+
+      <label for="logo">Logo</label>
+      <input id="logo" matInput type="text" formControlName="logo" placeholder="logo" [class.input-error]="!this.formularioProducto.get('logo').valid"/>
+      <p class="error" *ngIf="this.formularioProducto.get('logo').hasError('required')">Campo requerido</p>
+
+      <label for="dRev">Fecha revisión</label>
+      <input id="dRev" type="date" formControlName="date_revision" placeholder="fecha revisión" [class.input-error]="!this.formularioProducto.get('date_revision').valid" readonly/>
+      <p class="error" *ngIf="this.formularioProducto.get('date_revision').hasError('required')">Campo requerido</p>
+
+      <button class="enviar" [disabled]="!this.formularioProducto.valid" (click)="agregar()"> Enviar</button>
+    </div>
+    <br />
+  </div>
+  <div class="seccion center">
+    <button class="regresar" routerLink="/productos">Regresar</button>
+  </div>
+</form>

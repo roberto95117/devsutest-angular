@@ -7,13 +7,11 @@ import { AppInterceptor } from './_util/app-interceptor';
 import { AppRoutingModule } from './_util/app-routing.module';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { AppComponent } from './app.component';
-import { NoEcontradoComponent } from './pages/no-econtrado/no-econtrado.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NoEcontradoComponent
   ],
   imports: [
     BrowserModule,

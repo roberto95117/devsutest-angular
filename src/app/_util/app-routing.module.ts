@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: NoEcontradoComponent,
+    loadComponent: () => import('src/app/pages/no-econtrado/no-econtrado.component').then(c => c.NoEcontradoComponent),
     title: `No encontrado`
   }
 ];
